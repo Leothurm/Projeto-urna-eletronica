@@ -52,6 +52,11 @@ function atualizaInterface() {
     }
 
     lateral.innerHTML = fotosHtml;
+  } else{
+    seuVotoPara.style.display = "block";
+    aviso.style.display = "block";
+    descricao.innerHTML = '<div class="aviso-grande pisca">VOTO NULO</div>';
+
   }
 }
 
