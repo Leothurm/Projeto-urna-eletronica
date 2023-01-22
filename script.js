@@ -50,8 +50,14 @@ function atualizaInterface() {
 
     let fotosHtml = "";
     for (let i in candidato.fotos) {
-      fotosHtml +=
+      if(candidato.fotos[i].small){
+        fotosHtml +=
+        `<div class="d-1-image small"><img src="./img/${candidato.fotos[i].url}" alt="" /><p>${candidato.fotos[i] .legenda}</p></div>`;
+      } else{
+        fotosHtml +=
         `<div class="d-1-image"><img src="./img/${candidato.fotos[i].url}" alt="" /><p>${candidato.fotos[i] .legenda}</p></div>`;
+      }
+
     }
 
     lateral.innerHTML = fotosHtml;
@@ -108,7 +114,7 @@ function confirma() {
     if(etapas[etapaAtual] !== undefined){
       comecarEtapa();
     } else{
-      console.log('FIM!');
+      document.querySelector('.tela').innerHTML = '<div class="aviso-final pisca">FIM!</div>'
     }
   }
 
