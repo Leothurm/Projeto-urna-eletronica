@@ -7,7 +7,8 @@ let numeros = document.querySelector(".numeros-container");
 
 let etapaAtual = 0;
 let numero = "";
-let votoBranco = false
+let votoBranco = false;
+let votos = [];
 
 function comecarEtapa() {
   let etapa = etapas[etapaAtual];
@@ -103,10 +104,17 @@ function confirma() {
 
   if (votoBranco === true){
     votoConfirmado = true;
+    votos.push({
+      etapa: etapas[etapaAtual].titulo,
+      voto:'branco'
+    });
     console.log("Confirmando como branco");
   } else if(numero.length === etapa.numeros){
     votoConfirmado = true;
-    console.log("confirmando como " + numero);
+    votos.push({
+      etapa: etapas[etapaAtual].titulo,
+      voto: numero ,
+    });
   }
 
   if(votoConfirmado){
@@ -115,6 +123,7 @@ function confirma() {
       comecarEtapa();
     } else{
       document.querySelector('.tela').innerHTML = '<div class="aviso-final pisca">FIM!</div>'
+      console.log(votos);
     }
   }
 
